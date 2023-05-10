@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: fleetman-webapp 
+
+spec:
+  # this defines which pods are going to be represented by this service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+     app: ver5
+  
+  ports:
+    - name: http 
+      port: 80 
+      nodePort: 30080                        # k8s only allows you to use a nodePort greater than 30000 
+      
+  type: NodePort
+    # if we make the type clusterIP then this service will be 
+    # accessable only from inside the cluster , hence it wont be able to access by the browsers
+    # this might be useful in a microservice architecture where a micrservice maybe only needed to be accessed by 
+    # other microservices in the cluster
+    
+  
+--- 
+
+apiVersion: v1
+kind: Service 
+metadata:
+  name: fleetman-queue
+
+spec:
+  selector:
+    app: queue 
+  ports:
+    - name: http 
+      port: 8161 
+      nodePort: 30011
+  type: NodePort
+
