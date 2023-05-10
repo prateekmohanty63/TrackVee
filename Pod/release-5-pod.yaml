@@ -1,0 +1,15 @@
+apiVersion: v1
+
+kind: Pod
+
+
+metadata:
+  name: fleetman-test-ver5
+  labels:
+    app: ver5
+
+
+spec:
+  containers:
+    - name: fleetman-test-ver5 
+      image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
