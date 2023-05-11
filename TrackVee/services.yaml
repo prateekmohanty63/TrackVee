@@ -9,7 +9,7 @@ spec:
   # The service becomes a network endpoint for either other services
   # or maybe external users to connect to (eg browser)
   selector:
-     app: ver5
+     app: webapp
   
   ports:
     - name: http 
